@@ -3,7 +3,7 @@ import Main from './Main.js';
 import Footer from './Footer.js';
 import PopupWithForm from './PopupWithForm.js';
 import ImagePopup from './ImagePopup.js';
-import React, { useState } from 'react';
+import React from 'react';
 
 function App() {
 
@@ -145,7 +145,7 @@ function App() {
 export default App;
 
 
-{/* <section className="popup popup-edit-profile">
+/* <section className="popup popup-edit-profile">
 
         <div className="popup__wrapper">
             <button className="popup__button popup__button_type_close" type="button"></button>
@@ -194,8 +194,8 @@ export default App;
             </form>
         </div>
 
-    </section> */}
-{/* 
+    </section> */
+/* 
     <section className="popup popup-show-card-image">
 
         <div className="popup__wrapper popup__card-image-wrapper">
@@ -204,18 +204,18 @@ export default App;
             <p className="popup__full-image-capture"></p>
         </div>
 
-    </section> */}
+    </section> */
 
-{/* <section className="popup popup-confirm">
+/* <section className="popup popup-confirm">
         <div className="popup__wrapper">
             <button className="popup__button popup__button_type_close" type="button"></button>
             <h2 className="popup__name">Вы уверены?</h2>
             <button className="popup__button popup__button_type_confirm popup__button_active" type="button"> Да</button>
         </div>
 
-     </section> */}
+     </section> */
 
-{/*<section className="popup popup-edit-avatar">
+/*<section className="popup popup-edit-avatar">
         <div className="popup__wrapper">
             <button className="popup__button popup__button_type_close" type="button"></button>
             <h2 className="popup__name">Обновить аватар</h2>
@@ -234,4 +234,4 @@ export default App;
 
         </div>
 
-    </section> */}
+    </section> */

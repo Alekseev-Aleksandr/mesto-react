@@ -21,10 +21,7 @@
 - в терминале вводим команды 
  ```
 npm install
-npm run build
+npm start
  ```
   
 [GitHub Pages](https://alekseev-aleksandr.github.io/mesto/)
-
-### Планы:
-- переписать функционал с использованием React

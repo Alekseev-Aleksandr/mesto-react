@@ -1,6 +1,3 @@
-
-let initialCards = []
-// "77cf6af7cce7e7043f2c94d0"
 class Api {
 
     constructor(setFromServer) {
