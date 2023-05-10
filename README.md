@@ -23,5 +23,3 @@
 npm install
 npm start
  ```
-  
-[GitHub Pages](https://alekseev-aleksandr.github.io/mesto/)
