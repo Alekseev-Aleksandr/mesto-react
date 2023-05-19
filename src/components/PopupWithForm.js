@@ -5,7 +5,7 @@ import { AppContext } from "../context/AppContext"
 function PopupWithForm({ title, isOpen, onSubmit, children }) {
 
     const {isLoading, closeAllPopups: onClose} = useContext(AppContext)
-
+    
     usePopupClose(isOpen, onClose)
 
     return (
