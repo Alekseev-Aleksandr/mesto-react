@@ -4,121 +4,106 @@ class Api {
         this._baseUrl = setFromServer.baseUrl
         this._headers = setFromServer.headers
     }
+    
+    _request(url, options) {
+        url = this._baseUrl + url
+        return fetch(url, options)
+            .then(this.chekAnswer)
+    }
+
     chekAnswer(res) {
+
         if (res.ok) {
             return res.json();
         }
+        
         return Promise.reject(`Ошибка: ${res.status}`);
     }
 
     getInitialCards() {
-        return fetch(`${this._baseUrl}/cards`,
+        return this._request(`/cards`,
             {
                 method: 'GET',
                 headers: this._headers
             })
-            .then((res) => {
-                res = this.chekAnswer(res)
-                return res
-            })
+
     }
 
     getUserInfo() {
-        return fetch(`${this._baseUrl}/users/me`,
+        return this._request(`/users/me`,
             {
                 method: "GET",
                 headers: this._headers
             })
-            .then((res) => res.json())
     }
 
     editProfileInfo(data) {
-
-        return fetch(`${this._baseUrl}/users/me`,
+        return this._request(`/users/me`,
             {
                 method: "PATCH",
                 headers: this._headers,
-                body: JSON.stringify({
-                    name: data.name,
-                    about: data.about
-                })
-            })
-            .then((res) => {
-                res = this.chekAnswer(res)
-                return res
-            })
-            
+                body: JSON.stringify(
+                    {
+                        name: data.name,
+                        about: data.about
+                    }
+                )
+            }
+        )
     }
 
     addNewCard(data) {
-        
-        return fetch(`${this._baseUrl}/cards`,
+
+        return this._request(`/cards`,
             {
                 method: "POST",
                 headers: this._headers,
-                body: JSON.stringify({
-                    name: data.nameImage,
-                    link: data.linkImage
-                })
-            })
-            .then((res) => {
-                res = this.chekAnswer(res)
-                return res
-            })
-            
+                body: JSON.stringify(
+                    {
+                        name: data.nameImage,
+                        link: data.linkImage
+                    }
+                )
+            }
+        )
     }
 
-
-    editAvatar(data) { 
-        return fetch(`${this._baseUrl}/users/me/avatar`,
+    editAvatar(data) {
+        return this._request(`/users/me/avatar`,
             {
                 method: "PATCH",
                 headers: this._headers,
-                body: JSON.stringify({
-                    avatar: data.linkImageAvatar
-                })
-            })
-            .then((res) => {
-                res = this.chekAnswer(res)
-                return res
-            })
-           
+                body: JSON.stringify(
+                    {
+                        avatar: data.linkImageAvatar
+                    }
+                )
+            }
+        )
     }
 
     deleteCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}`,
+        return this._request(`/cards/${cardId}`,
             {
                 method: "DELETE",
                 headers: this._headers,
-            })
-            .then((res) => {
-                res = this.chekAnswer(res)
-                return res
-            })
-           
+            }
+        )
     }
 
     addLikeCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`,
+        return this._request(`/cards/${cardId}/likes`,
             {
                 method: "PUT",
                 headers: this._headers,
             })
-            .then((res) => {
-                res = this.chekAnswer(res)
-                return res
-            })
     }
 
     removeLikeCard(cardId) {
-        return fetch(`${this._baseUrl}/cards/${cardId}/likes`,
+        return this._request(`/cards/${cardId}/likes`,
             {
                 method: "DELETE",
                 headers: this._headers,
-            })
-            .then((res) => {
-                res = this.chekAnswer(res)
-                return res
             })
     }
 }

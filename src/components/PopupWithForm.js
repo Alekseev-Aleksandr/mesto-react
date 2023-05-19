@@ -1,20 +1,29 @@
-function PopupWithForm(props) {
+import { useContext } from "react"
+import usePopupClose from "../hooks/usePopupClose"
+import { AppContext } from "../context/AppContext"
+
+function PopupWithForm({ title, isOpen, onSubmit, children }) {
+
+    const {isLoading, closeAllPopups: onClose} = useContext(AppContext)
+
+    usePopupClose(isOpen, onClose)
 
     return (
-        <section className={`popup ${props.isOpen ? 'popup_opened' : ''}`}>
+        <section className={`popup ${isOpen ? 'popup_opened' : ''}`}>
 
             <div className="popup__wrapper">
                 <button className="popup__button popup__button_type_close"
                     type="button"
-                    onClick={props.onClose}>
-                </button>
+                    onClick={onClose} />
 
-                <h2 className="popup__name">{props.title}</h2>
+                <h2 className="popup__name">{title}</h2>
 
-                <form onSubmit={props.onSubmit}>
-                    {props.children}
+                <form onSubmit={onSubmit}>
+                    {children}
                     <button className="popup__button popup__button_type_save popup__button_active"
-                        type="submit">{props.buttonText}
+                        type="submit" >
+
+                        {isLoading? 'Cохранение...': 'Сохранить'}
                     </button>
                 </form>
 

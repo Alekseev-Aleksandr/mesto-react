@@ -60,7 +60,5 @@ export const rerenderAllCardsInPage = (userId) => {
             newSection.renderAllElement(res, userId)
             return res
         })
-        .catch(err => {
-            console.log(err);
-        })
+        .catch(console.error)
 }
